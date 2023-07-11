@@ -1,0 +1,193 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>BlogConn</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="icon" href="{% static 'C:\Users\Dell\OneDrive\Documents\projects\blogconn\blogconnect\static\blogconn_icon.png' %}">
+<style>
+* {
+  box-sizing: border-box;
+}
+a{
+text-decoration:none;
+color:black;
+}
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 2px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+.leftcolumn {
+  float: left;
+  width: 100%;
+}
+
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+.like-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div>
+    <span>
+      <button style="border:2px solid;border-radius:5px;float:right;background-color:black;color:white;width:90px;"> <a href="/feed" style="color:white;"><b>Back to feed</b></a> </button>
+        <h1  style="font-style:Serif;">BlogConn</h1>
+    <p style="font-style:Serif; "> &copy; a Sanman production</p>
+
+    </span>
+
+</div>
+<br><br><br><br>
+
+<div class="header" style="border-radius:30px;background-color:black;color:white;">
+  <h2>{{posts.title}}</h2>
+   <a href="/profile_user/{{posts.user}}" style="font-size:27px;"><h3 style="color:white;">by {{posts.user}}</h3></a>
+</div>
+
+<br><br><br><br><br>
+<div class="row">
+  <div class="leftcolumn">
+
+      <div class = "card" style="box-shadow: 10px 5px 5px lightblue;">
+
+
+
+
+          <h5>{{posts.created_at}}</h5>
+          <p style="font-size:20px;">{{posts.body}}</p>
+<br><br>
+    </div>
+      <br><br>
+     <hr>
+
+      <br>
+
+
+  </div>
+</div>
+<p><span id="like-count" style="color:blue;">{{ post.no_of_likes }}</span> people likes this post</p>
+<button id="like-btn" class="like-btn">
+    <img src="{% static 'C:\Users\Dell\OneDrive\Documents\projects\blogconn\blogconnect\static\like_btn.png' %}" alt="Like" style="width:35px;">
+</button>
+
+<br><br>
+<div>
+    <form action="{% url 'add_comment' posts.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+         <div class="col-span-2">
+                                <label for="about" style="font-size:30px;font-family:Brush Script;">Comment:</label>
+                                <br><br>
+                                <textarea id="about" name="comment_content" rows="3"  class="shadow-none bg-gray-100" style="border:1px solid;border-radius:6px; width:550px;height:200px;resize:none;" placeholder="Write your thoughts here..."></textarea>
+                            </div>
+         <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
+
+             <button type="submit" style="height:30px;color:white;background-color:orange;"><b>Comment </b></button>
+                       </div>
+
+
+    </form>
+
+</div>
+<h1>Comments</h1>
+<div style="">
+
+  <div class="comment">
+    {% for comment in comments reversed %}
+      <br>
+  <div class="comment" style="border:1px solid;">
+<div class="comment" style="background-color:white">
+    <span> {{ comment.user.username }} at {{ comment.date_added }}</span>
+       <p>{{ comment.content }}</p>
+</div>
+<br>
+
+
+  </div>
+      <h3>Replies:</h3>
+      <div style="border:1px solid;border-color:orange">
+
+          {% for reply in comment.replies.all %}
+      <div >
+          <p>{{reply.user.username}} replied: {{reply.content}}</p>
+
+
+      </div>
+
+
+{% endfor %}
+      </div>
+
+
+
+
+      <form method="POST" action="{% url 'reply_to_comment' comment.id %}">
+          {% csrf_token %}
+          <textarea name="reply_content" placeholder="Reply..." rows="5" style="width:350px;resize:none;" ></textarea>
+          <button type="submit" style="background:">Reply</button>
+
+      </form>
+{% empty %}
+  <p>No comments yet.</p>
+</div>
+    {% endfor %}
+<br><br>
+<div style="width:100%; background-color:black;height:110px;text-shadow: 1px 5px 5px lightgreen;">
+    <footer>
+        <h2 style="color:lightgreen;text-align:center;">BlogConn</h2>
+         <p style="font-style:Serif;text-align:center;color:white;"> &copy; a Sanman production 2023</p>
+    </footer>
+</div>
+
+</div>
+<script   src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function() {
+  // Like button click event
+  $('#like-btn').click(function() {
+    handleLikeDislike('like');
+  });
+   function handleLikeDislike(action) {
+    var postID = '{{ posts.id }}';
+
+    // Send AJAX request
+    $.get('/like_post/' + postID + '?action=' + action, function(data) {
+      // Update the like and dislike counts in the HTML
+      $('#like-count').text(data.likes);
+    });
+  }
+});
+</script>
+</body>
+</html>

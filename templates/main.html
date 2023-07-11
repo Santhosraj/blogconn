@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BlogConn</title>
+<!--     <link rel="stylesheet" href="{% static 'blogconnect/static/css/main_page.css' %">-->
+
+    <style>
+
+
+
+
+#maindiv{
+
+  position: absolute;
+  top: 40%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  font-size:50px;
+  padding: 5px;
+  width:600px;
+  height:600px
+
+}
+.navbar {
+float:right;
+  padding: 10px;
+  padding-right:20px;
+  top:30%;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  align-items: center;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a,
+.navbar a:focus {
+margin-top:30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  font-size: 30px;
+  color: #F8F8FF;
+  white-space: nowrap;
+  font-size:50px;
+  text-decoration:none;
+  transition: 0.3s;
+}
+
+.navbar a i,
+.navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+  color: #ADFF2F;
+}
+
+.navbar .getstarted,
+.navbar .getstarted:focus {
+  background: #2487ce;
+  padding: 8px 20px;
+  margin-left: 30px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.navbar .getstarted:hover,
+.navbar .getstarted:focus:hover {
+  color: #fff;
+  font-family: zantrokeregular, serif;
+  background: #3194db;
+}
+
+body{
+	margin:0;
+	padding:0;
+	font-family:"arial",heletica,sans-serif;
+	font-size:12px;
+    background:black
+url(https://gifdb.com/images/high/black-3d-loop-glow-1tdhrfp57p3p7zqs.gif)
+    repeat 0 0;
+	-webkit-animation: 10s linear 0s normal none infinite animate;
+	-moz-animation: 10s linear 0s normal none infinite animate;
+	-ms-animation: 10s linear 0s normal none infinite animate;
+	-o-animation: 10s linear 0s normal none infinite animate;
+	animation: 10s linear 0s normal none infinite animate;
+
+}
+
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+
+
+
+    </style>
+
+</head>
+<body>
+
+
+ <h1 style="color:white;padding-left:50px; font-size:30px;">BlogConn</h1>
+
+
+
+<nav id="navbar" class="navbar">
+    <ul>
+
+        {% if user.is_authenticated %}
+        <li><a href="/profile_user/{{user.username}}">Profile</a>  </li>
+        <li><a href="/chat_home">ChatRooms</a> </li>
+         <li><a href="/feed"> Blogs</a></li>
+        <li><a href="/settings">Account Settings</a></li>
+        <li><a class="nav-link scrollto" href="logout">Logout</a></li>
+        {% else %}
+        <li><a class="nav-link scrollto" href="login">Login or Signup</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<div id="maindiv">
+    {% if user.is_authenticated %}
+    <h1 id="heading1" style="color:White;">Howdy!</h1>
+    <h1 style="color:lightgreen;">{{user.username}}</h1>
+    <p style="color:white;">There is never gonna be a perfect time to tell your story!</p>
+    {% else %}
+    <h1 id="heading" style="color:white;">Welcome to</h1>
+    <h1 style="color:lightgreen;">BlogConn</h1>
+<p style="color:white;">A connecting and blogging webapp</p>
+    {% endif %}
+
+</div>
+ <footer style="padding-left:45px;font-size:20px;">
+        <p style="color:white;">&copy; a Sanman production</p>
+    </footer>
+</body>
+
+   </html>

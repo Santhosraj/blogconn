@@ -1,0 +1,60 @@
+  a{
+        text-decoration:none;
+        }
+        #heading{
+        font-size:70px;
+        text-align:center;
+
+        }
+        #logdiv{
+         border: 5px solid;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  bottom:20%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  width:550px;
+  height:550px
+        }
+    #logform{
+   justify-content: center;
+margin: 40px 50px;
+
+padding: 60px;
+
+
+    }
+  #reglink{
+   position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  }
+#title{
+text-align:center;
+}
+input[type=email] ,input[type = password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+body
+{
+
+}

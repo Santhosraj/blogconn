@@ -1,0 +1,40 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background: #131518;
+}
+#patt1 path {
+  stroke: #ff509e; // magenta
+}
+#patt2 path {
+  stroke: #95d13c; // lime
+}
+#patt3 path {
+  stroke: #00b6cb; // aqua
+}
+#patt4 path {
+  stroke: #9753e1; // purple
+}
+$duration: 1.90476s;
+$easeInOutSine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$easeInOutQuad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+#mask1 rect {
+  animation: pulse $duration infinite;
+  animation-timing-function: $easeInOutSine;
+}
+#mask2 rect {
+  x: 10;
+  animation: pulse $duration infinite ($duration/4);
+  animation-timing-function: $easeInOutSine;
+}
+#squiggle1, #squiggle2, #squiggle3, #squiggle4 {
+  background-blend-mode: multiply;
+}
+@keyframes pulse {
+  0% { x: 10; } // 10 + (0 * ww)
+  50% { x: -20; } // 10 + (-1 * ww)
+  100% { x: -50; } // 10 + (-2 * ww)
+}

@@ -1,0 +1,219 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'blogconnect/static/blogconn_icon.png' %}">
+    <title>Create Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'assets/css/icons.css' %}">
+   <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+
+
+
+    <style>
+    #inputdiv{
+    padding-left:50px;
+
+
+    }
+         #creatediv{
+         border: 5px solid;
+         border-radius:100px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  width:50px;
+  height:600px
+        }
+        form{
+   justify-content: center;
+margin: 40px 50px;
+
+padding: 60px;
+}
+input[type=submit] {
+  width: 20%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 10px 10px;
+
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <h1 style="font-size:50px;font-family:Monaco;padding-left:20px;padding-top:10px;"><a href="/">BlogConn</a></h1>
+    <p style="padding-left:20px;">&copy; A Sanman's production</p>
+    <br><br> <br><br>
+<div  id="creatediv" style="border:2px solid ;margin-top:250px; background-color:black;border-radius:30px;width:900px;height:800px;margin-bottom:150px;">
+
+<br>
+                <h1  style="color:Lightyellow;font-size:30px; font-family:Impact;padding-left:20px;">Create Your Blog</h1>
+<!--                <ul class="mt-5 -mr-3 flex-nowrap lg:overflow-hidden overflow-x-scroll uk-tab">-->
+<!--                    <li class="uk-active"><a href="#">General</a></li>-->
+<!--                    <li><a href="#">Profile</a></li>-->
+<!--                    <li><a href="#">Privacy</a></li>-->
+<!--                    <li><a href="#">Notification</a></li>-->
+<!--                    <li><a href="#">Social links</a></li>-->
+<!--                    <li><a href="#">Billing</a></li>-->
+<!--                    <li><a href="#">Security</a></li>-->
+<!--                </ul>-->
+
+                <br>
+
+
+
+                    <div id="inputdiv" style="border:1px solid; width:800px;height:680px; border-radius:20px;background-color:white;margin-bottom:50px;margin-left:50px;">
+
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                       <div class="grid grid-cols-2 gap-3 lg:p-6 p-4" style="">
+                             <div class="col-span-2" >
+                                <label for="tit" style="font-size:30px;font-family:Brush Script;">Title:</label><br>
+                                 <br>
+
+                                <input id="tit" type="text" name="title" placeholder="Title" style="border:1px solid;width:400px; height:60px;box-shadow: 10px 5px 5px lightblue;" />
+                            </div>
+                           <br><br>
+
+                            <div class="col-span-2">
+                                <label for="about" style="font-size:30px;font-family:Brush Script;">Write your Blog Here:</label>
+                                <br><br>
+                                <textarea id="about" name="blog" rows="6"  class="shadow-none bg-gray-100" style="border:1px solid;border-radius:6px; width:550px;height:200px;box-shadow: 10px 5px 5px lightblue;" placeholder="Write your blog here!"></textarea>
+                            </div>
+
+<!--                            <div>-->
+<!--                               <label for=""> Working at</label>-->
+<!--                               <input type="text" placeholder="" class="shadow-none bg-gray-100">-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                               <label for=""> Relationship </label>-->
+<!--                               <select id="relationship" name="relationship"  class="shadow-none bg-gray-100">-->
+<!--                                <option value="0">None</option>-->
+<!--                                <option value="1">Single</option>-->
+<!--                                <option value="2">In a relationship</option>-->
+<!--                                <option value="3">Married</option>-->
+<!--                                <option value="4">Engaged</option>-->
+<!--                              </select>-->
+<!--                            </div>-->
+                       </div>
+
+                       <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
+                           <button class="p-2 px-4 rounded bg-gray-50 text-red-500" style="padding-bottom:px;"> <a href="/">Cancel</a> </button>
+                           <input type="submit">
+                       </div>
+                    </form>
+
+                    </div>
+
+<!--                    <div>-->
+<!--                        <h3 class="text-xl mb-2"> Privacy</h3>-->
+<!--                        <p> </p>-->
+<!--                    </div>-->
+<!--                    <div class="bg-white rounded-md lg:shadow-lg shadow lg:p-6 p-4 col-span-2">-->
+
+<!--                    <div class="space-y-3">-->
+<!--                        <div class="flex justify-between items-center">-->
+<!--                            <div>-->
+<!--                                <h4> Who can follow me ?</h4>-->
+<!--                                <div>  </div>-->
+<!--                            </div>-->
+<!--                            <div class="switches-list -mt-8 is-large">-->
+<!--                                <div class="switch-container">-->
+<!--                                    <label class="switch"><input type="checkbox"><span class="switch-button"></span> </label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <hr>-->
+<!--                        <div class="flex justify-between items-center">-->
+<!--                            <div>-->
+<!--                                <h4> Show my activities ?</h4>-->
+<!--                                <div>  </div>-->
+<!--                            </div>-->
+<!--                            <div class="switches-list -mt-8 is-large">-->
+<!--                                <div class="switch-container">-->
+<!--                                    <label class="switch"><input type="checkbox" checked><span class="switch-button"></span> </label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <hr>-->
+<!--                        <div class="flex justify-between items-center">-->
+<!--                            <div>-->
+<!--                                <h4> Search engines?</h4>-->
+<!--                                <div>  </div>-->
+<!--                            </div>-->
+<!--                            <div class="switches-list -mt-8 is-large">-->
+<!--                                <div class="switch-container">-->
+<!--                                    <label class="switch"><input type="checkbox"><span class="switch-button"></span> </label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <hr>-->
+<!--                        <div class="flex justify-between items-center">-->
+<!--                            <div>-->
+<!--                                <h4> Allow Commenting?</h4>-->
+<!--                                <div>  </div>-->
+<!--                            </div>-->
+<!--                            <div class="switches-list -mt-8 is-large">-->
+<!--                                <div class="switch-container">-->
+<!--                                    <label class="switch"><input type="checkbox"><span class="switch-button"></span> </label>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+                    <br>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+ <!-- Scripts
+    ================================================== -->
+    <script src="{% static 'assets/js/tippy.all.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'assets/js/uikit.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+    <script src="{% static '../../unpkg.com/ionicons%405.2.3/dist/ionicons.js' %}"></script>
+<div style="width:100%; background-color:grey;height:110px;">
+    <footer>
+        <h2 style="color:lightgreen;text-align:center;">BlogConn</h2>
+         <p style="font-style:Serif;text-align:center;color:white;"> &copy; a Sanman production 2023</p>
+
+        <p style="font-style:Serif;text-align:center;color:white;">Contact: <a href="mailto:blogconnect23@gmail.com" style="color: white"
+        >blogconnect23@gmail.com</a></p>
+
+    </footer>
+</div>
+
+
+</body>
+
+</html>

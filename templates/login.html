@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BlogConn</title>
+
+    <style>
+        a{
+        text-decoration:none;
+        font-size:15px;
+        }
+        #heading{
+        font-size:70px;
+        text-align:center;
+
+        }
+        #logdiv{
+         border: 5px solid;
+         border-radius:100px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  bottom:20%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  width:550px;
+  height:550px
+        }
+    #logform{
+   justify-content: center;
+margin: 40px 50px;
+
+padding: 60px;
+
+
+    }
+  #reglink{
+   position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  }
+#title{
+text-align:center;
+}
+input[type=text] ,input[type = password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  width: 100%;
+  background-color:black;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size:12px;
+  font-family:bold;
+}
+
+body{
+	margin:0;
+	padding:0;
+	font-family:"arial",heletica,sans-serif;
+	font-size:12px;
+    background:black
+url(https://i.gifer.com/3HeZ.gif)
+    repeat 0 0;
+	-webkit-animation: 10s linear 0s normal none infinite animate;
+	-moz-animation: 10s linear 0s normal none infinite animate;
+	-ms-animation: 10s linear 0s normal none infinite animate;
+	-o-animation: 10s linear 0s normal none infinite animate;
+	animation: 10s linear 0s normal none infinite animate;
+
+}
+
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+
+
+    </style>
+</head>
+<body>
+ <p style="color:white;padding-left:30px;">&copy; a Sanman production 2023</p>
+
+<h1 id="heading" style="color:white;">BlogConn</h1>
+
+<div id="logdiv" style="background-color:white;">
+    <h1 id="title">Login</h1>
+    {% for message in messages %}
+    <h3 style="color:red;">{{message}}</h3>
+    {% endfor %}
+<form method="POST" action="login" id="logform">
+    {% csrf_token %}
+    <label for="email">Username</label>
+    <input type="text" name="username" required>
+  <br><br><br>
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <br><br>
+    <input type="submit" >
+</form>
+    <span id="reglink">
+      <p>Don't have an account? </p>
+    <a href="register">SignUp</a>
+    </span>
+
+</div>
+
+</body>
+</html>
